@@ -16,9 +16,9 @@ class CreateProductsTable extends Migration
         Schema::create('jf_products', function (Blueprint $table) {
             $table->id();
             $table->string('product_name');
-            $table->int('original_price');
+            $table->integer('original_price');
             $table->text('product_description');
-            $table->int('meta_type')->comment('0(default): retro & vintage; 1: quaint things')->default(0);
+            $table->integer('meta_type')->comment('0(default): retro & vintage; 1: quaint things')->default(0);
             $table->timestamps();
         });
     }

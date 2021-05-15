@@ -13,12 +13,13 @@ class CreateProductsTable extends Migration
      */
     public function up()
     {
-        Schema::create('jf_products', function (Blueprint $table) {
+        Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->string('product_name');
-            $table->integer('original_price');
-            $table->text('product_description');
-            $table->integer('meta_type')->comment('0(default): retro & vintage; 1: quaint things')->default(0);
+            $table->string('unit')->comment('the unit of product, ie. pc(piece), pair, box, etc.')->default('pc');
+            $table->integer('original_price')->comment('in AUD')->default(0);
+            $table->text('product_description')->nullable(true);
+            $table->text("product_thumbnail")->comment("thumbnail image url")->nullable();
             $table->timestamps();
         });
     }
@@ -30,6 +31,6 @@ class CreateProductsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('jf_products');
+        Schema::dropIfExists('products');
     }
 }

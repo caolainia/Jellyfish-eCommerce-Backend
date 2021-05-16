@@ -18,7 +18,7 @@ class CreateProductsTable extends Migration
             $table->string('product_name');
             $table->string('unit')->comment('the unit of product, ie. pc(piece), pair, box, etc.')->default('pc');
             $table->integer('original_price')->comment('in AUD')->default(0);
-            $table->text('product_description')->nullable(true);
+            $table->text('product_description')->nullable();
             $table->text("product_thumbnail")->comment("thumbnail image url")->nullable();
             $table->timestamps();
         });

@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
-use App\Models\ProductMeta
+use App\Models\ProductMeta;
 use Illuminate\Http\Request;
 
 class ProductApiController extends Controller

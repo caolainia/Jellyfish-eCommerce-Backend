@@ -1,8 +1,33 @@
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700,200');
 
 // Variables
 @import 'variables';
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+$burgundy: #800020;
+$gold: #edb42f;
+$lightblue: #9bbcde;
+$darkgrey: #3d3c47;
+
+.gold-text{
+	color: $burgundy;
+}
+
+#jf-nav{
+	background-color: $lightblue;
+}
+
+.jf-login-alert{
+	display: table;
+	color: white;
+	font-weight: bold;
+	font-size: 3rem;
+	height: 100%;
+}
+.jf-login-alert span{
+	display: table-cell;
+  	vertical-align: middle;
+}

@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class ProductMeta extends Model
 {
     use HasFactory;
+
+    public function getProduct()
+    {
+        return this->belongsTo(Product::class);
+    }
 }

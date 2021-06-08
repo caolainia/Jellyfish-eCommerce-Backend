@@ -1903,6 +1903,12 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
 var app = new Vue({
   el: '#app'
 });
+$(document).ready(function () {
+  $('.jf-product-tr').click(function () {
+    window.location.href = $(this).data('href');
+    return false;
+  });
+});
 
 /***/ }),
 

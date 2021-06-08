@@ -15,23 +15,19 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            // SKU formula: (different color must have diff sku)
-            // J{S(hoes), C(lothes), P(ants), B(ag)}
-            // -{Category Chain: Gender(1d)+}
-            // -{1000-id+id%13}
-            $table->char('sku', 13)->unique()->nullable();
+            $table->char('sku', 11)->unique();
             $table->string('product_name', 200);
-            $table->integer('gender')->comment('suitable gender, 0:f, 1:m, 2:neutral, 3:kids')->default(2);
-            $table->string('brand', 50)->default('Adidas');
-            $table->string('color', 50);
-            $table->integer('category')->default(0)->comment("deepest category id");
-            $table->integer('original_price')->comment('in AUD')->default(0);
-            $table->integer('current_price')->comment('in AUD')->default(0);
+            $table->tinyInteger('gender')->comment('suitable gender, 0:f, 1:m, 2:neutral, 3:kids')->default(2);
+            $table->string('color', 50)->nullable();
+            $table->unsignedBigInteger('category')->default(0)->comment("deepest category id");
+            $table->unsignedSmallInteger('original_price')->comment('in AUD')->default(0);
+            $table->unsignedSmallInteger('current_price')->comment('in AUD')->default(0);
             $table->integer('amt_sold')->default(0);
             $table->integer('amt_viewed')->default(0);
             $table->text('product_description')->nullable();
             $table->text("product_thumbnail")->comment("thumbnail image url")->nullable();
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
         });
     }
 

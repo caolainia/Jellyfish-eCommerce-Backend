@@ -10022,3 +10022,12 @@ h3 {
   display: table-cell;
   vertical-align: middle;
 }
+
+.jf-product-tr {
+  cursor: pointer;
+}
+.jf-product-tr:hover {
+  background-color: #f96000;
+  color: white;
+  font-weight: bold;
+}

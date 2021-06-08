@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\ProductMeta;
+use Intervention\Image\Facades\Image;
 
 class ProductController extends Controller
 {
@@ -32,8 +33,9 @@ class ProductController extends Controller
 
     public function store()
     {
+
         $data = request()->validate([
-            'caption' => 'required',
+            'pname' => 'required',
             'image' => ['required', 'image'],
         ]);
 
@@ -42,16 +44,34 @@ class ProductController extends Controller
         $image = Image::make(public_path("storage/{$imagePath}"))->fit(1200, 1200);
         $image->save();
 
-        auth()->user()->posts()->create([
-            'caption' => $data['caption'],
-            'image' => $imagePath,
+        Product::create([
+            'product_name' => $data['pname'],
+            'product_thumbnail' => $imagePath,
         ]);
 
-        return redirect('/profile/' . auth()->user()->id);
+        return redirect('/products');
     }
 
-    public function show(\App\Post $post)
+    /**
+     * Generate Product SKU
+     * JF . firstUpChar($gender) . ASCII of first2UpChar($brand) . 4digit(7*$categoryId + $id)
+     * @param int $id, int $categoryId, string $brand, int $gender
+     * @return string $sku
+     */
+    private function generateSku($id, $categoryId, $brand, $gender) {
+        $genderChar = 'N';
+        if ($gender == 0) {
+            $genderChar = 'F';
+        } else if ($gender == 1) {
+            $genderChar = 'M';
+        } else if ($gender == 3) {
+            $genderChar = 'K';
+        }
+        return $sku;
+    }
+
+    public function show(Product $product)
     {
-        return view('posts.show', compact('post'));
+        return view('products.show', compact('product'));
     }
 }

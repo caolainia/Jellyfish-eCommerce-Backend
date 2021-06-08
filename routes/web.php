@@ -15,6 +15,12 @@ use Illuminate\Support\Facades\Route;
 
 
 Auth::routes();
+
 Route::redirect('/', '/home');
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 Route::get('/products', [App\Http\Controllers\ProductController::class, 'index'])->name('products');
+Route::get('/product/create', [App\Http\Controllers\ProductController::class, 'create'])->name('create_product');
+Route::get('/product/{product}', [App\Http\Controllers\ProductController::class, 'show'])->name('show_product');
+Route::post('/product', [App\Http\Controllers\ProductController::class, 'store'])->name('store_product');

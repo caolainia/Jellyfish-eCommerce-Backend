@@ -16,6 +16,7 @@ class CreateProductMetasTable extends Migration
         Schema::create('product_metas', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('product_id');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
             $table->string('meta_key');
             $table->text('meta_value');
             $table->timestamps();
@@ -29,6 +30,10 @@ class CreateProductMetasTable extends Migration
      */
     public function down()
     {
+        Schema::table('product_metas', function (Blueprint $table) {
+            $table->dropForeign('product_metas_product_id_foreign');
+            $table->dropColumn('product_id');
+        });
         Schema::dropIfExists('product_metas');
     }
 }

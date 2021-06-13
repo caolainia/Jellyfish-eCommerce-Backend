@@ -47,15 +47,15 @@
         @auth
           <ul class="nav">
             <li>
-              <a href="./dashboard.html">
+              <a href="{{ URL::to('home') }}">
                 <i class="now-ui-icons design_app"></i>
                 <p>Dashboard</p>
               </a>
             </li>
             <li>
-              <a href="./icons.html">
+              <a href="{{ URL::to('products') }}">
                 <i class="now-ui-icons education_atom"></i>
-                <p>Icons</p>
+                <p>Products</p>
               </a>
             </li>
             <li>

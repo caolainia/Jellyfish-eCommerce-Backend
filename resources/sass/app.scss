@@ -31,3 +31,13 @@ $darkgrey: #3d3c47;
 	display: table-cell;
   	vertical-align: middle;
 }
+
+.jf-product-tr{
+	cursor: pointer;
+	&:hover{
+		background-color: #f96000;
+		color: white;
+		font-weight: bold;
+	}
+}
+

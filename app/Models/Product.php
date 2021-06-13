@@ -9,9 +9,25 @@ class Product extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-    	'product_name', 'original_price'
-    ];
+    protected $guarded = [];
 
-    
+    public function getCategory()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
+    public function getBrands()
+    {
+        return $this->belongsToMany(Brand::class, 'product_brand');
+    }
+
+    public function productMetas()
+    {
+        return $this->hasMany(ProductMeta::class);
+    }
+
+    public function productImages()
+    {
+        return $this->hasMany(ProductImage::class);
+    }
 }

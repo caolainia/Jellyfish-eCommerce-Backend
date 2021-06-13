@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProductMetasTable extends Migration
+class CreateProductBrandTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateProductMetasTable extends Migration
      */
     public function up()
     {
-        Schema::create('product_metas', function (Blueprint $table) {
+        Schema::create('product_brand', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('product_id');
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
-            $table->string('meta_key');
-            $table->text('meta_value');
+            $table->unsignedBigInteger('brand_id');
+            $table->foreign('brand_id')->references('id')->on('brands')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -30,10 +30,12 @@ class CreateProductMetasTable extends Migration
      */
     public function down()
     {
-        Schema::table('product_metas', function (Blueprint $table) {
-            $table->dropForeign('product_metas_product_id_foreign');
+        Schema::table('product_brand', function (Blueprint $table) {
+            $table->dropForeign('product_brand_product_id_foreign');
             $table->dropColumn('product_id');
+            $table->dropForeign('product_brand_brand_id_foreign');
+            $table->dropColumn('brand_id');
         });
-        Schema::dropIfExists('product_metas');
+        Schema::dropIfExists('product_brand');
     }
 }

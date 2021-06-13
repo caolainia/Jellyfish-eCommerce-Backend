@@ -30,3 +30,10 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 const app = new Vue({
     el: '#app',
 });
+
+$(document).ready(function(){
+    $('.jf-product-tr').click(function(){
+        window.location.href = $(this).data('href');
+        return false;
+    });
+});

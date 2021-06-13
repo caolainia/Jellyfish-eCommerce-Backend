@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ProductMeta extends Model
+class Brand extends Model
 {
     use HasFactory;
 
-    public function getProduct()
+    public function getProducts()
     {
-        return this->belongsTo(Product::class);
+        return $this->belongsToMany(Product::class, 'product_brand');
     }
 }

@@ -4,13 +4,23 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
+use App\Models\Category;
+use App\Models\Brand;
+use App\Models\Color;
 use App\Models\ProductMeta;
 use Illuminate\Http\Request;
 
 class ProductApiController extends Controller
 {
     public function index() {
+        $products = Product::all();
         return Product::all();
+    }
+
+    public function indexByBrand($brand_name) {
+        $brand = Brand::where('name', '=', $brand_name)->first();
+        $products = $brand->products;
+        return $products;
     }
 
     public function show(Product $product) {

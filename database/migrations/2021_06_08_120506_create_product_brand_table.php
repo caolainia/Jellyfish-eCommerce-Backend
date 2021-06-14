@@ -19,7 +19,16 @@ class CreateProductBrandTable extends Migration
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
             $table->unsignedBigInteger('brand_id');
             $table->foreign('brand_id')->references('id')->on('brands')->onDelete('cascade');
+
+            $table->unique( array('product_id','brand_id') );
         });
+
+        // Insert Dummy Relation
+        DB::table('product_brand')->insert(
+            [
+                ['product_id' => 1, 'brand_id' => 3],
+            ]
+        );
     }
 
     /**

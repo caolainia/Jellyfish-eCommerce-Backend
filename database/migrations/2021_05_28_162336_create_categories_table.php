@@ -22,10 +22,10 @@ class CreateCategoriesTable extends Migration
         // Insert Categories
         DB::table('categories')->insert(
             [
-                ['parent_id' => null, 'name' => 'Bags'], 
-                ['parent_id' => null, 'name' => 'Clothing'],
-                ['parent_id' => null, 'name' => 'Shoes'],
-                ['parent_id' => null, 'name' => 'Jewelry'],
+                ['parent_id' => null, 'name' => 'bags'], 
+                ['parent_id' => null, 'name' => 'clothing'],
+                ['parent_id' => null, 'name' => 'shoes'],
+                ['parent_id' => null, 'name' => 'jewelry'],
             ]
         );
     }

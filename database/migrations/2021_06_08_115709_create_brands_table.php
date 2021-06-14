@@ -21,11 +21,11 @@ class CreateBrandsTable extends Migration
         // Insert Brands
         DB::table('brands')->insert(
             [
-                ['name' => 'Adidas'], ['name' => 'Nike'],['name' => 'Yeezy'], ['name' => 'Air Jordan'],
-                ['name' => 'Balenciaga'], ['name' => 'Gucci'],['name' => 'Louis Vuitton'], 
-                ['name' => 'Alexander McQueen'], ['name' => 'Yves Saint Laurent'], 
-                ['name' => 'Dior'],['name' => 'Prada'], ['name' => 'Givenchy'],
-                ['name' => 'Tom Ford'], ['name' => 'Burberry'],['name' => 'Hermes'],
+                ['name' => 'adidas'], ['name' => 'nike'],['name' => 'yeezy'], ['name' => 'air jordan'],
+                ['name' => 'balenciaga'], ['name' => 'gucci'],['name' => 'louis vuitton'], 
+                ['name' => 'yves saint laurent'], 
+                ['name' => 'dior'],['name' => 'prada'], ['name' => 'givenchy'],
+                ['name' => 'tom ford'], ['name' => 'burberry'],['name' => 'hermes'],
             ]
         );
     }

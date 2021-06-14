@@ -16,9 +16,18 @@ class CreateCategoriesTable extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger("parent_id")->nullable(true);
-            $table->string("title");
-            $table->timestamps();
+            $table->string("name");
         });
+
+        // Insert Categories
+        DB::table('categories')->insert(
+            [
+                ['parent_id' => null, 'name' => 'Bags'], 
+                ['parent_id' => null, 'name' => 'Clothing'],
+                ['parent_id' => null, 'name' => 'Shoes'],
+                ['parent_id' => null, 'name' => 'Jewelry'],
+            ]
+        );
     }
 
     /**

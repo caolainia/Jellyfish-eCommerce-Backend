@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Category;
 use App\Models\Brand;
+use App\Models\Color;
 use App\Models\ProductMeta;
 use Intervention\Image\Facades\Image;
 
@@ -23,14 +25,15 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::latest()->paginate(5);
-
-        return view('products.index', compact('products'));
+        
+        return view('products.index')->with(compact('products'));
     }
 
     public function create()
     {
         $brands = Brand::all();
-        return view('products.create', ['brands' => $brands]);
+        $colors = Color::all();
+        return view('products.create', ['brands' => $brands, 'colors' => $colors]);
     }
 
     public function store()
@@ -40,23 +43,38 @@ class ProductController extends Controller
             'pname' => 'required',
             'pgender' => 'required',
             'pbrand' => 'required',
+            'pcolor' => 'required',
             'poprice' => 'required',
             'pcprice' => 'required',
         ]);
 
-        $imagePath = request('pthumbnail')->store('uploads', 'public');
-        $image = Image::make(public_path("storage/{$imagePath}"))->fit(800, 800);
-        $image->save();
+        if ( request('pthumbnail') !== null ) {
+            $imagePath = request('pthumbnail')->store('uploads', 'public');
+            $image = Image::make(public_path("storage/{$imagePath}"))->fit(800, 800);
+            $image->save();
+        } else {
+            $imagePath = "image404.png";
+        }
 
+        $desc = isset($data['pdescription']) ? $data['pdescription'] : null;
 
         $product = Product::create([
             'product_name' => $data['pname'],
+            'gender' => $data['pgender'],
             'original_price' => $data['poprice'],
             'current_price' => $data['pcprice'],
-            'description' => $data['pdescription'],
+            'description' => $desc,
             'thumbnail' => $imagePath,
         ]);
 
+        $pid = $product->id;
+        $brand = Brand::find($data['pbrand']);
+        $brand->getProducts()->attach($pid);
+        $product->getBrands()->attach($brand->id);
+
+        $color = Color::find($data['pcolor']);
+        $color->getProducts()->attach($pid);
+        $product->getColors()->attach($color->id);
 
         return redirect('/products');
     }

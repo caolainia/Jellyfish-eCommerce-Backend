@@ -11,17 +11,17 @@ class Product extends Model
 
     protected $guarded = [];
 
-    public function getCategory()
+    public function category()
     {
         return $this->belongsTo(Category::class);
     }
 
-    public function getBrands()
+    public function brands()
     {
         return $this->belongsToMany(Brand::class, 'product_brand');
     }
 
-    public function getColors()
+    public function colors()
     {
         return $this->belongsToMany(Color::class, 'product_color');
     }

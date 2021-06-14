@@ -5,13 +5,13 @@
     <div class="card p-5">
         <div class="row">
             <div class="col-8">
-                <img src="/storage/{{ $product->product_thumbnail }}" class="w-100">
+                <img src="/storage/{{ $product->thumbnail }}" class="w-100">
             </div>
             <div class="col-4">
                 <div>
                     <div class="d-flex align-items-center">
                         <div class="pr-3">
-                            <img src="/storage/{{ $product->product_thumbnail }}" class="rounded-circle w-100" style="max-width: 40px;">
+                            <img src="/storage/{{ $product->thumbnail }}" class="rounded-circle w-100" style="max-width: 40px;">
                         </div>
                         <div>
                             <div class="font-weight-bold">

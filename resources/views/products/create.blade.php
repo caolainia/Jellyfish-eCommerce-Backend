@@ -50,6 +50,18 @@
           </div>
 
           <div class="form-group row">
+            <label for="pcolor" class="col-md-3 col-form-label">Color <span style="color:red; font-weight: 900;">*</span></label>
+
+            <select class="form-control" id="pcolor" name="pcolor">
+              @foreach ($colors as $color)
+                <option value="{{ $color->id }}" @if ($color->id == 1) selected @endif>
+                  {{ $color->name }}
+                </option>
+              @endforeach
+            </select>
+          </div>
+
+          <div class="form-group row">
               <label for="poprice" class="col-md-3 col-form-label">Original Price($) <span style="color:red; font-weight: 900;">*</span></label>
 
               <input id="poprice" type="text" 

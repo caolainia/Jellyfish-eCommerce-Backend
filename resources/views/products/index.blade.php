@@ -19,7 +19,9 @@
               <th>SKU</th>
               <th>Original Price</th>
               <th>Current Price</th>
-              <th class="text-right">Brand</th>
+              <th>Brand</th>
+              <th>Color</th>
+              <th>Category</th>
             </thead>
             <tbody>
               
@@ -29,7 +31,9 @@
                   <td>{{ $product->sku }}</td>
                   <td>${{ $product->original_price }}</td>
                   <td>${{ $product->current_price }}</td>
-                  <td class="text-right">{{ $product->brand }}</td>
+                  <td>{{ $product->brands->first()->name }}</td>
+                  <td>{{ $product->colors->first()->name }}</td>
+                  <td>{{ $product->category->name }}</td>
                 </tr>
               @endforeach
             </tbody>

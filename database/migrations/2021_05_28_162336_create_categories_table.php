@@ -15,17 +15,17 @@ class CreateCategoriesTable extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger("parent_id")->nullable(true);
             $table->string("name");
         });
 
         // Insert Categories
         DB::table('categories')->insert(
             [
-                ['parent_id' => null, 'name' => 'bags'], 
-                ['parent_id' => null, 'name' => 'clothing'],
-                ['parent_id' => null, 'name' => 'shoes'],
-                ['parent_id' => null, 'name' => 'jewelry'],
+                ['name' => 'shoes'],
+                ['name' => 'bags'],
+                ['name' => 'clothing'],
+                ['name' => 'jewelry'],
+                ['name' => 'watches'],
             ]
         );
     }

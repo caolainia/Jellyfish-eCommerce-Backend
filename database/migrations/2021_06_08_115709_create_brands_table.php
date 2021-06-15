@@ -21,11 +21,37 @@ class CreateBrandsTable extends Migration
         // Insert Brands
         DB::table('brands')->insert(
             [
-                ['name' => 'adidas'], ['name' => 'nike'],['name' => 'yeezy'], ['name' => 'air jordan'],
-                ['name' => 'balenciaga'], ['name' => 'gucci'],['name' => 'louis vuitton'], 
-                ['name' => 'yves saint laurent'], 
-                ['name' => 'dior'],['name' => 'prada'], ['name' => 'givenchy'],
-                ['name' => 'tom ford'], ['name' => 'burberry'],['name' => 'hermes'],
+                ['name' => 'Adidas'], 
+                ['name' => 'Air Jordan'],
+                ['name' => 'Nike'],
+                ['name' => 'Alexander McQueen'],
+                ['name' => 'Balenciaga'], 
+                ['name' => 'Burberry'],
+                ['name' => 'Chanel'],
+                ['name' => 'Dior'],
+                ['name' => 'Gucci'],
+                ['name' => 'Louis Vuitton'], 
+                ['name' => 'OFF-WHITE'], 
+                ['name' => 'Saint Laurent'],
+                ['name' => 'Prada'],
+                ['name' => 'Givenchy'],
+                ['name' => 'Tom Ford'],
+                ['name' => 'Versace'],
+                ['name' => 'Hermes'],
+                ['name' => 'Goyard'],
+                ['name' => 'Artist Merch'], 
+                ['name' => 'ASSC'],
+                ['name' => 'Bape'],
+                ['name' => 'Fear Of God'],
+                ['name' => 'Kaws'],
+                ['name' => 'Kith'], 
+                ['name' => 'Nike Apparel'],
+                ['name' => 'Palace'],
+                ['name' => 'Superme'],
+                ['name' => 'Chrome Hearts'],
+                ['name' => 'OVO'], 
+                ['name' => 'Noah'],
+                
             ]
         );
     }

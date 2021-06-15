@@ -17,9 +17,14 @@ class ProductApiController extends Controller
         return Product::all();
     }
 
-    public function indexByBrand($brand_name) {
-        $brand = Brand::where('name', '=', $brand_name)->first();
+    public function indexByBrand($brand_id) {
+        $brand = Brand::find($brand_id);
         $products = $brand->products;
+        return $products;
+    }
+
+    public function indexBySeries($series_id) {
+        $products = $series_id->products;
         return $products;
     }
 

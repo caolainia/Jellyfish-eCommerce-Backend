@@ -16,16 +16,20 @@ class Product extends Model
         return $this->belongsTo(Category::class);
     }
 
-    public function brands()
+    public function brand()
     {
-        return $this->belongsToMany(Brand::class, 'product_brand');
+        return $this->belongsTo(Brand::class);
+    }
+
+    public function series()
+    {
+        return $this->belongsTo(Series::class);
     }
 
     public function colors()
     {
         return $this->belongsToMany(Color::class, 'product_color');
     }
-
 
     public function productMetas()
     {
@@ -39,12 +43,12 @@ class Product extends Model
 
     /**
      * Generate Product SKU
-     * JF . firstUpChar($gender) . ASCII of first2UpChar($brand) . 4digit(7*$categoryId + $id)
+     * JF . firstUpChar($gender) . 4d($brandId*157+$id) . 4d(7*$categoryId + $id)
      * @param int $id, int $categoryId, string $brand, int $gender
      * @return string $sku
      */
-    public function generateSku($id, $categoryId, $brand, $gender) {
-        $genderChar = 'N';
+    public function generateSku($id, $categoryId, $brandId, $gender) {
+        $genderChar = 'U';
         if ($gender == 0) {
             $genderChar = 'F';
         } else if ($gender == 1) {
@@ -52,7 +56,7 @@ class Product extends Model
         } else if ($gender == 3) {
             $genderChar = 'K';
         }
-
+        $sku = 'JF' . $genderChar;
 
         return $sku;
     }

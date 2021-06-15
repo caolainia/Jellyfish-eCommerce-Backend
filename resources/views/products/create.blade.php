@@ -28,11 +28,11 @@
           </div>
 
           <div class="form-group row">
-            <label for="pgender" class="col-md-3">Suitable Group <span style="color:red; font-weight: 900;">*</span></label>
+            <label for="pgender" class="col-md-3">Gender <span style="color:red; font-weight: 900;">*</span></label>
             <select class="form-control" id="pgender" name="pgender">
               <option value="0">Females</option>
               <option value="1">Males</option>
-              <option selected value="2">Neutral</option>
+              <option selected value="2">Unisex</option>
               <option value="3">Kids</option>
             </select>
           </div>

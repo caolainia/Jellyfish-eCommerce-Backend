@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\Brand;
+use App\Models\Series;
 use App\Models\Color;
 use App\Models\ProductMeta;
 use Illuminate\Http\Request;
@@ -17,15 +18,14 @@ class ProductApiController extends Controller
         return Product::all();
     }
 
-    public function indexByBrand($brand_id) {
-        $brand = Brand::find($brand_id);
-        $products = $brand->products;
-        return $products;
+    public function indexByBrand($id) {
+        $brand = is_numeric($id) ? Brand::find($id) : Brand::whereRaw("UPPER(`name`) LIKE ?", [strtoupper($id)])->first();
+        return $brand->products;
     }
 
-    public function indexBySeries($series_id) {
-        $products = $series_id->products;
-        return $products;
+    public function indexBySeries($id) {
+        $series = is_numeric($id) ? Series::find($id) : Series::whereRaw("UPPER(`name`) LIKE ?", [strtoupper($id)])->first();
+        return $series->products;
     }
 
     public function show(Product $product) {

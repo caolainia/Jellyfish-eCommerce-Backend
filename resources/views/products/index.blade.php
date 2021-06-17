@@ -20,7 +20,7 @@
               <th>Original Price</th>
               <th>Current Price</th>
               <th>Brand</th>
-              <th>Color</th>
+              <th>Series</th>
               <th>Category</th>
             </thead>
             <tbody>
@@ -31,8 +31,14 @@
                   <td>{{ $product->sku }}</td>
                   <td>${{ $product->original_price }}</td>
                   <td>${{ $product->current_price }}</td>
-                  <td>{{ $product->brands->first()->name }}</td>
-                  <td>{{ $product->colors->first()->name }}</td>
+                  <td>{{ $product->brand->name }}</td>            
+                  <td>
+                    @if ( isset($product->series_id) )
+                      {{ $product->series->name }}
+                    @else 
+                      {{ __('N/A') }}
+                    @endif
+                  </td>                  
                   <td>{{ $product->category->name }}</td>
                 </tr>
               @endforeach

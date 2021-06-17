@@ -14,6 +14,11 @@ class Series extends Model
         return $this->belongsTo(Brand::class);
     }
 
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
     public function products()
     {
         return $this->hasMany(Product::class);

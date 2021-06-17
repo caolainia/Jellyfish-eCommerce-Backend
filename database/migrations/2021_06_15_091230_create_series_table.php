@@ -15,8 +15,10 @@ class CreateSeriesTable extends Migration
     {
         Schema::create('series', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger("brand_id")->nullable(true);
+            $table->unsignedBigInteger("brand_id");
             $table->foreign('brand_id')->references('id')->on('brands')->onDelete('cascade');
+            $table->unsignedBigInteger("category_id")->default(1);
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->string("name");
         });
 
@@ -30,7 +32,7 @@ class CreateSeriesTable extends Migration
                 // ['brand_id' => 1, 'name' => 'Ivy Park'],
                 // ['brand_id' => 1, 'name' => 'Raf Simons'],
                 ['brand_id' => 1, 'name' => 'Yeezy'],
-                // ['brand_id' => 1, 'name' => 'Ultra Boost'],
+                ['brand_id' => 1, 'name' => 'Ultra Boost'],
                 // ['brand_id' => 1, 'name' => 'NMD'],
                 // ['brand_id' => 1, 'name' => 'Iniki'],
                 // ['brand_id' => 1, 'name' => 'Stan Smith'],
@@ -93,7 +95,6 @@ class CreateSeriesTable extends Migration
                 // ['brand_id' => 3, 'name' => 'Huarache'],
                 // ['brand_id' => 3, 'name' => 'Daybreak'],
                 // ['brand_id' => 3, 'name' => 'Yeezy'],
-
             
             ]
         );

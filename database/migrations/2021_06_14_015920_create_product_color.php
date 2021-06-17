@@ -26,7 +26,15 @@ class CreateProductColor extends Migration
         // Insert Dummy Product Color Relation
         DB::table('product_color')->insert(
             [
+                ['product_id' => 1, 'color_id' => 1],
+                ['product_id' => 1, 'color_id' => 2],
+                ['product_id' => 1, 'color_id' => 3],
+                ['product_id' => 1, 'color_id' => 4],
                 ['product_id' => 1, 'color_id' => 5],
+                ['product_id' => 1, 'color_id' => 6],
+                ['product_id' => 2, 'color_id' => 1],
+                ['product_id' => 2, 'color_id' => 2],
+                
             ]
         );
     }

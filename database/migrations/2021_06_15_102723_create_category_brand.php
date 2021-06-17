@@ -27,7 +27,7 @@ class CreateCategoryBrand extends Migration
         // Insert Dummy Category Brand Relation
         DB::table('category_brand')->insert(
             [
-                ['category_id' => 1, 'brand_id' => 1],
+                ['category_id' => 1, 'brand_id' => 3, 'name' => 'nike_shoes'],
             ]
         );
     }

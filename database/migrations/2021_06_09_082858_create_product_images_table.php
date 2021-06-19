@@ -18,6 +18,20 @@ class CreateProductImagesTable extends Migration
             $table->unsignedBigInteger("product_id");
             $table->string("image_url");
         });
+
+        // Insert images
+        DB::table('product_images')->insert(
+            [
+                ['product_id' => 1, 'image_url' => 'image404.png'],
+                ['product_id' => 1, 'image_url' => 'image404.png'],
+                ['product_id' => 1, 'image_url' => 'image404.png'],
+                ['product_id' => 1, 'image_url' => 'image404.png'],
+                ['product_id' => 1, 'image_url' => 'image404.png'],
+                ['product_id' => 1, 'image_url' => 'image404.png'],
+                ['product_id' => 1, 'image_url' => 'image404.png'],
+                ['product_id' => 1, 'image_url' => 'image404.png'],
+            ]
+        );
     }
 
     /**

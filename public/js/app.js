@@ -1907,6 +1907,14 @@ $(document).ready(function () {
   $('.jf-product-tr').click(function () {
     window.location.href = $(this).data('href');
     return false;
+  }); // Multiple-item Carousel 
+
+  $('#lightslider').lightSlider({
+    autoWidth: true,
+    loop: true,
+    onSliderLoad: function onSliderLoad() {
+      $('#lightslider').removeClass('cS-hidden');
+    }
   });
 });
 

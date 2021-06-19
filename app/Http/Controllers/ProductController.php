@@ -7,7 +7,7 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\Brand;
 use App\Models\Color;
-use App\Models\ProductMeta;
+use App\Models\ProductImage;
 use Intervention\Image\Facades\Image;
 
 class ProductController extends Controller
@@ -81,6 +81,30 @@ class ProductController extends Controller
 
     public function show(Product $product)
     {
-        return view('products.show', compact('product'));
+        $thumbnail = "/storage/image404.png";
+        // image existence checking
+        if (isset($product->thumbnail) && $product->thumbnail != null) {
+            // if it's url
+            if ( preg_match('/http.*?:\/\//', $product->thumbnail) ) {
+                $thumbnail = $product->thumbnail;
+            } else {
+                $thumbnail = "/storage/" . $product->thumbnail;
+            }
+        }
+
+        $gender = 'Unisex';
+        if ($product->gender == 0) {
+            $gender = 'Female';
+        } else if ($product->gender == 1) {
+            $gender = 'Male';
+        } else if ($product->gender == 3) {
+            $gender = 'Kids';
+        }
+
+        $data = [ 
+            'thumbnail' => $thumbnail, 
+            'gender' => $gender
+        ];
+        return view('products.show', compact('product'))->with($data);
     }
 }

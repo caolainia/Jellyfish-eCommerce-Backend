@@ -14,6 +14,9 @@
 
   <!-- Scripts -->
   <script src="{{ asset('js/app.js') }}"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <!-- lightSlider Scripts -->
+  <script src="{{ asset('js/lightslider.min.js') }}"></script>
 
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
@@ -24,11 +27,12 @@
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
   <!-- CSS Files -->
+  <link type="text/css" rel="stylesheet" href="{{ asset('css/lightslider.min.css') }}" />
   <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
   <link href="../assets/css/now-ui-dashboard.css?v=1.5.0" rel="stylesheet" />
 </head>
 
-<body class="">
+<body>
   <div id="app" class="wrapper">
 
     {{-- Left Side Sidebar --}}
@@ -196,10 +200,9 @@
   <!--  Notifications Plugin    -->
   <script src="../assets/js/plugins/bootstrap-notify.js"></script>
   <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
-  <script src="../assets/js/now-ui-dashboard.min.js?v=1.5.0" type="text/javascript"></script><!-- Now Ui Dashboard DEMO methods, don't include it in your project! -->
+  <script src="../assets/js/now-ui-dashboard.min.js?v=1.5.0" type="text/javascript"></script>
+  <!-- Now Ui Dashboard DEMO methods, don't include it in your project! -->
   <script src="../assets/demo/demo.js"></script>
-
-
 
   @yield('scripts')
 

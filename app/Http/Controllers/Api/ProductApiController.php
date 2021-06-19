@@ -8,7 +8,6 @@ use App\Models\Category;
 use App\Models\Brand;
 use App\Models\Series;
 use App\Models\Color;
-use App\Models\ProductMeta;
 use Illuminate\Http\Request;
 
 class ProductApiController extends Controller
@@ -16,6 +15,11 @@ class ProductApiController extends Controller
     public function index() {
         $products = Product::all();
         return Product::all();
+    }
+
+    public function indexByCategory($id) {
+        $category = is_numeric($id) ? Category::find($id) : Category::whereRaw("UPPER(`name`) LIKE ?", [strtoupper($id)])->first();
+        return $category->products;
     }
 
     public function indexByBrand($id) {
@@ -32,13 +36,13 @@ class ProductApiController extends Controller
         return Product::find($product);
     }
 
-    public function create(Product $product) {
+    public function create() {
         request()->validate([
             'product_name' => 'required',
             'original_price' => 'required',
         ]);
 
-        return Post::create([
+        return Product::create([
             'product_name' => request('product_name'),
             'original_price' => request('original_price'),
         ]);

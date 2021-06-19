@@ -4,13 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
-class ProductMeta extends Model
+class Transaction extends Model
 {
     use HasFactory;
 
-    public function getProduct()
-    {
-        return this->belongsTo(Product::class);
-    }
+    protected $guarded = [];
+
+    public $timestamps = false;
 }

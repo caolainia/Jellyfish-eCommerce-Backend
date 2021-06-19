@@ -21,6 +21,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 Route::get('/products', [App\Http\Controllers\Api\ProductApiController::class, 'index']);
+Route::get('/products/by/category/{category}', 
+    [App\Http\Controllers\Api\ProductApiController::class, 'indexByCategory'])->where('category', '[A-Za-z0-9_]+');
 Route::get('/products/by/brand/{brand}', 
     [App\Http\Controllers\Api\ProductApiController::class, 'indexByBrand'])->where('brand', '[A-Za-z0-9_]+');
 Route::get('/products/by/series/{series}', 
@@ -35,3 +37,6 @@ Route::get('/brand/{brand}',
 
 Route::get('/series/{series}', 
     [App\Http\Controllers\Api\SeriesApiController::class, 'show'])->name('sereies.show')->where('series', '[A-Za-z0-9_]+');
+
+Route::post('/transaction', 
+    [App\Http\Controllers\Api\TransactionApiController::class, 'create'])->name('transaction.create');

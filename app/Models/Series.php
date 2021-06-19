@@ -9,6 +9,8 @@ class Series extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     public function brand()
     {
         return $this->belongsTo(Brand::class);

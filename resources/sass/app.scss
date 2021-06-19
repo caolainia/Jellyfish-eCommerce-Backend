@@ -7,10 +7,19 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+$fa-font-path:        "../webfonts";
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
+@import "~@fortawesome/fontawesome-free/scss/solid";
+@import "~@fortawesome/fontawesome-free/scss/brands";
+@import "~@fortawesome/fontawesome-free/scss/regular";
+
+
 $burgundy: #800020;
 $gold: #edb42f;
 $lightblue: #9bbcde;
 $darkgrey: #3d3c47;
+$lightgrey: #e3e3e3;
+$cyan: #1ca1c9;
 
 .gold-text{
 	color: $burgundy;
@@ -42,5 +51,59 @@ $darkgrey: #3d3c47;
 }
 
 .jf-textarea{
-	border: 1px solid #E3E3E3 !important;
+	border: 1px solid $lightgrey !important;
 }
+
+
+$breakpoint-tablet: 768px;
+.jf-carousel {
+    width: 100%;
+    background-color: black !important;
+    padding: 10px 10px 0 10px;
+}
+#lightslider {
+    list-style: none outside none;
+    padding-left: 0;
+    margin-bottom:0;
+}
+.jf-ls-li {
+    display: block;
+    float: left;
+    margin-right: 6px;
+    cursor:pointer;
+}
+ul.jf-ls-li > li > img {
+    display: block;
+    height: auto;
+    max-width: 100%;
+}
+
+.lSAction>a{
+	opacity: 1 !important;
+}
+
+.jf-tag{
+	text-align: center;
+	width: 4rem;
+	height: 1.5rem;
+	line-height: 1.5rem;
+	border-radius: 3px;
+	color: white;
+	font-size: 0.9rem;
+}
+.jf-tag-flex{
+	text-align: center;
+	padding: 0 8px;
+	height: 1.5rem;
+	line-height: 1.5rem;
+	border-radius: 3px;
+	color: white;
+	font-size: 0.9rem;
+}
+.jf-arrow{
+
+}
+.cyan-back{ background-color: $cyan; }
+.gold-back{ background-color: $gold; }
+.black-back{ background-color: black; }
+

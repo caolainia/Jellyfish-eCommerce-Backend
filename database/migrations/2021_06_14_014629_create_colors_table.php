@@ -19,7 +19,7 @@ class CreateColorsTable extends Migration
             $table->string("hex");
         });
 
-        // Insert Brands
+        // Insert Colors
         DB::table('colors')->insert(
             [
                 ['name' => 'Black', 'hex' => '#000000'],

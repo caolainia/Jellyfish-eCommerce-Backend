@@ -31,18 +31,19 @@ class ProductApiController extends Controller
         $slicedNum = 5;
         if (isset($num))
             $slicedNum = $num;
-        return array_slice($productsSortedByViews, 0, $slicedNum);
+        return $productsSortedByViews->slice(0, $slicedNum);
     }
 
     public function trendingProductsByCategory($cat, $num) {
         $catModel = is_numeric($cat) ? Category::find($cat) : Category::whereRaw("UPPER(`name`) LIKE ?", [strtoupper($cat)])->first();
+
         $products = $catModel->products;
 
         $productsSortedByViews = $products->sortBy('amt_viewed');
         $slicedNum = 5;
-        if ( isset($num) )
+        if (isset($num))
             $slicedNum = $num;
-        return array_slice($productsSortedByViews, 0, $slicedNum);
+        return $productsSortedByViews->slice(0, $slicedNum);
     }
 
 

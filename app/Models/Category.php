@@ -13,12 +13,12 @@ class Category extends Model
 
     public function products()
     {
-        return this->hasMany(Product::class);
+        return $this->hasMany(Product::class);
     }
 
     public function series()
     {
-        return this->hasMany(Series::class);
+        return $this->hasMany(Series::class);
     }
 
     public function brands()

@@ -17,23 +17,49 @@ class ProductApiController extends Controller
         return Product::all();
     }
 
-    public function indexByCategory($id) {
-        $category = is_numeric($id) ? Category::find($id) : Category::whereRaw("UPPER(`name`) LIKE ?", [strtoupper($id)])->first();
-        return $category->products;
+    public function indexByCategory($cat) {
+        $catModel = is_numeric($cat) ? Category::find($cat) : Category::whereRaw("UPPER(`name`) LIKE ?", [strtoupper($cat)])->first();
+        return isset($catModel) ?  $catModel->products : [];
     }
 
-    public function indexByBrand($id) {
-        $brand = is_numeric($id) ? Brand::find($id) : Brand::whereRaw("UPPER(`name`) LIKE ?", [strtoupper($id)])->first();
-        return $brand->products;
+    public function popularProductsByCategory($cat, $num) {
+        $catModel = is_numeric($cat) ? Category::find($cat) : Category::whereRaw("UPPER(`name`) LIKE ?", [strtoupper($cat)])->first();
+
+        $products = $catModel->products;
+
+        $productsSortedByViews = $products->sortBy('amt_viewed');
+        $slicedNum = 5;
+        if (isset($num))
+            $slicedNum = $num;
+        return array_slice($productsSortedByViews, 0, $slicedNum);
     }
 
-    public function indexBySeries($id) {
-        $series = is_numeric($id) ? Series::find($id) : Series::whereRaw("UPPER(`name`) LIKE ?", [strtoupper($id)])->first();
-        return $series->products;
+    public function trendingProductsByCategory($cat, $num) {
+        $catModel = is_numeric($cat) ? Category::find($cat) : Category::whereRaw("UPPER(`name`) LIKE ?", [strtoupper($cat)])->first();
+        $products = $catModel->products;
+
+        $productsSortedByViews = $products->sortBy('amt_viewed');
+        $slicedNum = 5;
+        if ( isset($num) )
+            $slicedNum = $num;
+        return array_slice($productsSortedByViews, 0, $slicedNum);
     }
 
-    public function show(Product $product) {
-        return Product::find($product);
+
+
+    public function indexByBrand($brand) {
+        $brandModel = is_numeric($brand) ? Brand::find($brand) : Brand::whereRaw("UPPER(`name`) LIKE ?", [strtoupper($brand)])->first();
+        return isset($brandModel) ?  $brandModel->products : [];
+    }
+
+    public function indexBySeries($series) {
+        $seriesModel = is_numeric($series) ? Series::find($series) : Series::whereRaw("UPPER(`name`) LIKE ?", [strtoupper($series)])->first();
+        return isset($seriesModel) ?  $seriesModel->products : [];
+    }
+
+    public function show($product) {
+        if (is_numeric($product))
+            return Product::find($product);
     }
 
     public function create() {
